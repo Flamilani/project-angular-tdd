@@ -5,7 +5,6 @@ import { emailPattern } from '../../shared/validators/validator';
 import { Observable } from 'rxjs';
 import { AuthResponseData } from '../../shared/validators/interfaces/authData.interface';
 import { IntegrationService } from '../../services/integration.service';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -30,8 +29,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private integrationService: IntegrationService,
-    private authService: AuthService
+    private integrationService: IntegrationService
   ) {
 
   }
@@ -54,7 +52,9 @@ export class LoginComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
-    let authObs: Observable<AuthResponseData>;
+   // this.router.navigateByUrl('/home');
+
+   let authObs: Observable<AuthResponseData>;
 
     authObs = this.integrationService.login(email, password);
 
@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/home');
       },
       errorMessage => {
+        this.invalidLogin = true;
         console.log(errorMessage);
         this.error = errorMessage;
       }
@@ -72,14 +73,5 @@ export class LoginComponent implements OnInit {
     form.reset();
   }
 
-  signIn(credentials: any) {
-    this.authService.login(credentials)
-      .subscribe(result => {
-        if (result)
-          this.router.navigate(['/']);
-        else
-          this.invalidLogin = true;
-      });
-  }
 
 }

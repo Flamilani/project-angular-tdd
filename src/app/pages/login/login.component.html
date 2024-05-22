@@ -2,7 +2,7 @@
   <div class="card card-login">
     <div class="card-header">Sign in</div>
     <div class="card-body">
-      <form [formGroup]="formLogin" (ngSubmit)="signIn(formLogin)">
+      <form [formGroup]="formLogin" (ngSubmit)="onSubmit(formLogin)">
         <div class="card-text">
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
@@ -20,26 +20,14 @@
               </div>
             </div>
           </div>
-          <div class="mb-3">
+          <p class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input
               formControlName="password"
               type="password"
               class="form-control"
             />
-            <div
-              class="alert alert-danger mt-2"
-              role="alert"
-              *ngIf="
-                formLogin.controls['password']?.invalid &&
-                formLogin.controls['password']?.touched
-              "
-            >
-              <div *ngIf="formLogin.controls['password'].hasError('required')">
-                Please enter password
-              </div>
-            </div>
-          </div>
+          </p>
         </div>
         <button
           [disabled]="formLogin.invalid"
@@ -49,7 +37,7 @@
           Login
         </button>
         <div class="alert alert-danger mt-2" role="alert" *ngIf="invalidLogin">
-          Error in server
+          Email or password incorrets
         </div>
       </form>
     </div>
