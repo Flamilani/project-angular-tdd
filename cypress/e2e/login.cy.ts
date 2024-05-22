@@ -15,7 +15,7 @@ describe('Login Component', () => {
     // Check if the login card is visible
     cy.get('.card-login').should('be.visible');
     // Check if the card header contains "Sign in"
-    cy.get('.card-header').should('contain.text', 'Sign in2');
+    cy.get('.card-header').should('contain.text', 'Sign in');
   });
 
   it('should display validation errors', () => {
