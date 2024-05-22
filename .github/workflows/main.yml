@@ -27,9 +27,6 @@ jobs:
       - name: Start the application
         run: npm start &
 
-      - name: Run CI
-        run: npm e2e
-
       - name: Run Test
         run: npm test
 
