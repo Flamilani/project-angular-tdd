@@ -26,6 +26,19 @@ jobs:
 
       - name: Start the application
         run: npm start &
+              
+      - name: Run CI              
+        run: npm ci
+
+      - name: Run Prettier
+        run: npm run prettier
+
+      - name: Run Linter
+        run: npm run linter
+
+      - name: Run Test
+        run: npm test
 
       - name: Run Cypress tests
         run: npx cypress run
+
