@@ -39,9 +39,6 @@ jobs:
       - name: Run Jest unit tests
         run: npm run test -- --watch=false
 
-      - name: Build Angular application
-        run: npm run build -- --prod
-
       - name: Start the Angular application
         run: npm start &
         env:
