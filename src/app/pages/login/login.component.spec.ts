@@ -68,7 +68,7 @@ describe('LoginComponent', () => {
       let control = component.formLogin.get('email');
 
       // Act
-      control?.setValue('valid.email@example.com');
+      control?.setValue('valid@email.com');
 
       // Assert
       expect(control?.valid).toBeTruthy();
